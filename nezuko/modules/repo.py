@@ -34,15 +34,15 @@ __HELP__ = "/repo - To Get My Github Repository Link " "And Support Group Link"
 @app.on_message(filters.command("repo"))
 @capture_err
 async def repo(_, message):
-    users = await get("https://api.github.com/repos/sudjousr/bot/contributors")
+    users = await get("http://ip-api.com/json/24.48.0.1?fields=status,message,country,countryCode,region,regionName,city,zip,lat,lon,timezone,isp,org,as,query")
     list_of_users = "".join(
-        f"**{count}.** [{user['login']}]({user['html_url']})\n"
+        f"**{count}.** [{user['country']}]({user['html_url']})\n"
         for count, user in enumerate(users, start=1)
     )
 
     text = f"""[Owner](https://t.me/imnoob_xd) | [Group](t.me/vvip_bd)
 ```----------------
-| Contributors |
+| Dev |
 ----------------```
 {list_of_users}"""
     await app.send_message(message.chat.id, text=text, disable_web_page_preview=True)
